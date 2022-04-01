@@ -1,33 +1,13 @@
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT, REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE } from "../utils/authConsts";
+import { combineReducers } from "redux";
 
-let user = JSON.parse(localStorage.getItem('user'));
-const initialState = user ? {logged: true, user} : {}
+import signIn from "./signIn.reducer";
+import signUp from "./signUp.reducer";
+import alert from "./alert.reducer";
 
-const reducer = (state = initialState, action) => {
-	switch (action.type) {
-		case REGISTER_REQUEST:
-			return { registering: true };
-		case REGISTER_SUCCESS:
-			return {};
-		case REGISTER_FAILURE:
-			return {};
-		case LOGIN_REQUEST:
-			return {
-				loggingIn: true,
-				user: action.user
-			};
-		case LOGIN_SUCCESS:
-			return {
-				loggedIn: true,
-				user: action.user
-			};
-		case LOGIN_FAILURE:
-			return {};
-		case LOGOUT:
-			return {};
-		default:
-			return state
-	}
-}
+const reducer = combineReducers({
+	signIn,
+	signUp,
+	alert
+});
 
 export default reducer;
