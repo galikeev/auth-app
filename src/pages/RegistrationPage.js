@@ -19,6 +19,7 @@ const RegistrationPage = connect(mapState, actionCreators)((props) => {
         return {
             email: '',
 			password: '',
+            confirmPassword: '',
 			firstName: '',
 			lastName: '',
 			userName:'',
@@ -46,10 +47,10 @@ const RegistrationPage = connect(mapState, actionCreators)((props) => {
                 submitted: true
             }
         });
-		const { firstName, lastName, userName, email, password } = registration.state;
-		if (email && password) {
+		const { firstName, lastName, userName, email, password, confirmPassword } = registration;
+		if (email && password === confirmPassword) {
 			props.register({firstName, lastName, userName, email, password});
-		}
+		} 
 	}
 
     return (
@@ -117,9 +118,25 @@ const RegistrationPage = connect(mapState, actionCreators)((props) => {
                         className="form-control input-shadow" 
                         placeholder="Enter Password" 
                         value={registration.password}
-                        onChange={handleInputChange} name="password" autoComplete="off"
+                        onChange={handleInputChange} 
+                        name="password" 
+                        autoComplete="off"
                     />
-                    {registration.submitted && !registration.firstName && <div className="help-block">Password is required</div> }
+                    {registration.submitted && !registration.password && <div className="help-block">Password is required</div> }
+                </div>
+                <div className={'form-group' + (registration.submitted && !registration.confirmPassword ? ' has-error' : '')}>
+                    <label htmlFor="password">Confirm Password: </label>
+                    <input 
+                        type="password" 
+                        id="confirmPassword" 
+                        className="form-control input-shadow" 
+                        placeholder="Confirm Password" 
+                        value={registration.confirmPassword}
+                        onChange={handleInputChange} 
+                        name="confirmPassword" 
+                        autoComplete="off"
+                    />
+                    {registration.submitted && registration.confirmPassword !== registration.password && <div className="help-block">Пароли не совпадают</div> }
                 </div>
                 <button 
                     type="button" 
