@@ -1,7 +1,7 @@
 import { LOGIN_ROUTE, PASSWORD_ROUTE, REGISTRATION_ROUTE } from './utils/routesConsts';
 
 import PasswordPage from './pages/PasswordPage';
-import LoginPage from './pages/LoginPage';
+import connectedLoginPage from './pages/LoginPage';
 import RegistrationPage from './pages/RegistrationPage';
 
 export const authRoutes = [
@@ -14,7 +14,7 @@ export const authRoutes = [
 export const publicRoutes = [
     {
         path: LOGIN_ROUTE,
-        Component: LoginPage
+        Component: connectedLoginPage
     },
     {
         path: REGISTRATION_ROUTE,
