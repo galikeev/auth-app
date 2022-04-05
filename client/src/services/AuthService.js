@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000/';
+const apiUrl = 'http://localhost:4000/';
 
 const handleResponse = (response) => {
     return response.text().then(text => {
@@ -40,7 +40,7 @@ const register = async (user) => {
         body: JSON.stringify(user)
     };
 
-    const response = await fetch(`${apiUrl}users/register`, requestOptions);
+    const response = await fetch(`${apiUrl}users/registration`, requestOptions);
     return handleResponse(response);
 }
 
