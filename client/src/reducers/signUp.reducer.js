@@ -1,13 +1,11 @@
-import { REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE } from "../utils/authConsts";
+import { REGISTER_SUCCESS, REGISTER_FAILURE } from "../utils/authConsts";
 
 const signUp = (state = {}, action) => {
     switch (action.type) {
-        case REGISTER_REQUEST:
+        case REGISTER_SUCCESS:
             return {
                 isRegistered: true
             };
-        case REGISTER_SUCCESS:
-            return {};
         case REGISTER_FAILURE:
             return {};
         default:
