@@ -1,24 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { userActions } from '../actions';
 import {REGISTRATION_ROUTE} from '../utils/routesConsts';
 
 import '../styles/fz.scss';
 
-const mapState = (state) => {
-	const { isLogged } = state;
-	return { isLogged };
-}
 
-const actionCreators = {
-	login: userActions.login,
-	logout: userActions.logout
-};
-
-const Login = connect(mapState, actionCreators)((props) => {
-
-    props.logout();
+const Login = () => {
 
     const [login, setLogin] = useState(() => {
         return {
@@ -26,7 +15,9 @@ const Login = connect(mapState, actionCreators)((props) => {
             password: '',
             submitted: false
         }
-    })
+    });
+
+    const dispatch = useDispatch();
 
 	const handleInputChange = (e) => {
 		let name = e.target.name;
@@ -49,7 +40,7 @@ const Login = connect(mapState, actionCreators)((props) => {
         });
 		const { email, password } = login;
 		if (email && password) {
-			props.login(email, password);
+			dispatch(userActions.login(email, password));
 		}
 	}
 
@@ -97,7 +88,7 @@ const Login = connect(mapState, actionCreators)((props) => {
                 </form>
         </div>
     )
-});
+};
 
 
 export default Login;

@@ -1,21 +1,12 @@
 import { useState } from 'react';
 import {Link} from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { userActions } from '../actions';
 
 import '../styles/fz.scss';
 
-const mapState = (state) => {
-    const { isRegistered } = state;
-    return { isRegistered };
-}
-
-const actionCreators = {
-    register: userActions.register
-}
-
-const RegistrationPage = connect(mapState, actionCreators)((props) => {
+const RegistrationPage = () => {
 
     const [registration, setRegistration] = useState(() => {
         return {
@@ -29,6 +20,7 @@ const RegistrationPage = connect(mapState, actionCreators)((props) => {
         }
     });
 
+    const dispatch = useDispatch();
 
 	const handleInputChange = (e) => {
 		let name = e.target.name;
@@ -51,7 +43,7 @@ const RegistrationPage = connect(mapState, actionCreators)((props) => {
         });
 		const { firstName, lastName, userName, email, password, confirmPassword } = registration;
 		if (email && password === confirmPassword) {
-			props.register({firstName, lastName, userName, email, password});
+			dispatch(userActions.register({firstName, lastName, userName, email, password}));
 		} 
 	}
 
@@ -153,6 +145,6 @@ const RegistrationPage = connect(mapState, actionCreators)((props) => {
             </form>
         </div>
     )
-})
+};
 
 export default RegistrationPage;
