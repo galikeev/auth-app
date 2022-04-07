@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import { userActions } from '../actions';
 
+import '../styles/fz.scss';
+
 const mapState = (state) => {
     const { isRegistered } = state;
     return { isRegistered };
@@ -55,11 +57,11 @@ const RegistrationPage = connect(mapState, actionCreators)((props) => {
 
     return (
 
-        <div className="col-md-4 col-md-offset-4">
+        <div className="col-md-4 col-md-offset-4" style={{'margin' : '50px auto 0 auto'}}>
             <h2 className="text-center">User Registration</h2>
             <form>
                 <div className={'form-group' + (registration.submitted && !registration.firstName ? ' has-error' : '')}>
-                    <label>First Name:</label>
+                    <label className='fz_15'>First Name:</label>
                     <input 
                         type="text" 
                         id="firstName" 
@@ -69,10 +71,10 @@ const RegistrationPage = connect(mapState, actionCreators)((props) => {
                         onChange={handleInputChange} 
                         name="firstName"
                     />
-                    {registration.submitted && !registration.firstName && <div className="help-block">First Name is required</div>}
+                    {registration.submitted && !registration.firstName && <div className="help-block text-danger fz_13">First Name is required</div>}
                 </div>
                 <div className={'form-group' + (registration.submitted && !registration.lastName ? ' has-error' : '')}>
-                    <label>Last Name:</label>
+                    <label className='fz_15'>Last Name:</label>
                     <input 
                         type="text" 
                         id="lastName" 
@@ -82,10 +84,10 @@ const RegistrationPage = connect(mapState, actionCreators)((props) => {
                         onChange={handleInputChange} 
                         name="lastName"
                     />
-                    {registration.submitted && !registration.lastName && <div className="help-block">Last Name is required</div>}
+                    {registration.submitted && !registration.lastName && <div className="help-block text-danger fz_13">Last Name is required</div>}
                 </div>
                 <div className={'form-group' + (registration.submitted && !registration.userName ? ' has-error' : '')}>
-                    <label>Username:</label>
+                    <label className='fz_15'>Username:</label>
                     <input 
                         type="text" 
                         id="userName" 
@@ -95,10 +97,10 @@ const RegistrationPage = connect(mapState, actionCreators)((props) => {
                         onChange={handleInputChange} 
                         name="userName"
                     />
-                    {registration.submitted && !registration.userName && <div className="help-block">username is required</div>}
+                    {registration.submitted && !registration.userName && <div className="help-block text-danger fz_13">Username is required</div>}
                 </div>
                 <div className={'form-group' + (registration.submitted && !registration.email ? ' has-error' : '')}>
-                    <label>Email:</label>
+                    <label className='fz_15'>Email:</label>
                     <input 
                         type="text" 
                         id="email" 
@@ -108,10 +110,10 @@ const RegistrationPage = connect(mapState, actionCreators)((props) => {
                         onChange={handleInputChange} 
                         name="email"
                     />
-                    {registration.submitted && !registration.email && <div className="help-block">Email is required</div>}
+                    {registration.submitted && !registration.email && <div className="help-block text-danger fz_13">Email is required</div>}
                 </div>
                 <div className={'form-group' + (registration.submitted && !registration.password ? ' has-error' : '')}>
-                    <label htmlFor="password">Password: </label>
+                    <label htmlFor="password" className='fz_15'>Password: </label>
                     <input 
                         type="password" 
                         id="password" 
@@ -122,10 +124,10 @@ const RegistrationPage = connect(mapState, actionCreators)((props) => {
                         name="password" 
                         autoComplete="off"
                     />
-                    {registration.submitted && !registration.password && <div className="help-block">Password is required</div> }
+                    {registration.submitted && !registration.password && <div className="help-block text-danger fz_13">Password is required</div> }
                 </div>
                 <div className={'form-group' + (registration.submitted && !registration.confirmPassword ? ' has-error' : '')}>
-                    <label htmlFor="password">Confirm Password: </label>
+                    <label htmlFor="password" className='fz_15'>Confirm Password: </label>
                     <input 
                         type="password" 
                         id="confirmPassword" 
@@ -136,16 +138,18 @@ const RegistrationPage = connect(mapState, actionCreators)((props) => {
                         name="confirmPassword" 
                         autoComplete="off"
                     />
-                    {registration.submitted && registration.confirmPassword !== registration.password && <div className="help-block">Пароли не совпадают</div> }
+                    {registration.submitted && registration.confirmPassword !== registration.password && <div className="help-block text-danger fz_13">Пароли не совпадают</div> }
                 </div>
-                <button 
-                    type="button" 
-                    onClick={submitRegister} 
-                    className="btn btn-primary btn-block"
-                >
-                    Register
-                </button>
-                <Link to="/login" className="btn btn-link">Login</Link>
+                <div style={{'marginTop' : '10px'}}>
+                    <button 
+                        type="button" 
+                        onClick={submitRegister} 
+                        className="btn btn-primary btn-block"
+                    >
+                        Register
+                    </button>
+                    <Link to="/login" className="btn btn-link">Login</Link>
+                </div>
             </form>
         </div>
     )

@@ -15,7 +15,7 @@ const connectedApp = (props) => {
     });
 
     return (
-        <div>
+        <div className='container'>
             {props.alert.message && <div className={props.alert.type}>{props.alert.message}</div>}
             <Routes history={history}>
                 {localStorage.getItem('user') && authRoutes.map(({path, Component}) => 

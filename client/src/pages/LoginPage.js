@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { userActions } from '../actions';
 import {REGISTRATION_ROUTE} from '../utils/routesConsts';
 
+import '../styles/fz.scss';
+
 const mapState = (state) => {
 	const { isLogged } = state;
 	return { isLogged };
@@ -52,11 +54,11 @@ const Login = connect(mapState, actionCreators)((props) => {
 	}
 
     return (
-        <div className="col-md-4 col-md-offset-4">
+        <div className="col-md-4 col-md-offset-4" style={{'margin' : '50px auto 0 auto'}}>
             <h2 className="text-center">User Login</h2>
                 <form name="form">
                     <div className={'form-group' + (login.submitted && !login.email ? ' has-error' : '')}>
-                        <label htmlFor="email">Email:</label>
+                        <label htmlFor="email" className='fz_15'>Email:</label>
                         <input 
                             type="text" 
                             id="email" 
@@ -66,10 +68,10 @@ const Login = connect(mapState, actionCreators)((props) => {
                             onChange={handleInputChange} 
                             name="email"
                         />
-                        {login.submitted && !login.email && <div className="help-block">Email is required</div> }
+                        {login.submitted && !login.email && <div className="help-block text-danger fz_13">Email is required</div> }
                     </div>
                     <div className={'form-group' + (login.submitted && !login.password ? ' has-error' : '')}>                    
-                        <label>Password: </label>
+                        <label className='fz_15'>Password: </label>
                         <input 
                             type="password" 
                             id="exampleInputPassword" 
@@ -80,16 +82,18 @@ const Login = connect(mapState, actionCreators)((props) => {
                             name="password" 
                             autoComplete="off"
                         />
-                        {login.submitted && !login.email && <div className="help-block">Password is required</div> }
+                        {login.submitted && !login.email && <div className="help-block text-danger fz_13">Password is required</div> }
                     </div>
-                    <button 
-                        type="button" 
-                        onClick={submitLogin} 
-                        className="btn btn-primary btn-block"
-                    >
-                        Sign In
-                    </button>
-                    <Link to={REGISTRATION_ROUTE} className="btn btn-link">Register</Link>
+                    <div style={{'marginTop' : '10px'}}>
+                        <button 
+                            type="button" 
+                            onClick={submitLogin} 
+                            className="btn btn-primary btn-block"
+                        >
+                            Sign In
+                        </button>
+                        <Link to={REGISTRATION_ROUTE} className="btn btn-link">Register</Link>
+                    </div>
                 </form>
         </div>
     )
