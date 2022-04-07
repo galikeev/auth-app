@@ -3,11 +3,11 @@ import { authService } from '../services/AuthService';
 import { alertActions } from './alert.actions';
 import { history } from '../services/history';
 
-const login = (username, password) => {
+const login = (email, password) => {
     return dispatch => {
-        dispatch(request({ username }));
+        dispatch(request({ email }));
 
-        authService.login(username, password)
+        authService.login(email, password)
             .then(
                 user => { 
                     dispatch(success(user));

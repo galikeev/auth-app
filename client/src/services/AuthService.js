@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:4000/';
+const apiUrl = 'http://localhost:5000/api/auth';
 
 const handleResponse = (response) => {
     return response.text().then(text => {
@@ -16,14 +16,14 @@ const handleResponse = (response) => {
     });
 }
 
-const login = async (username, password) => {
+const login = async (email, password) => {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ email, password })
     };
 
-    const response = await fetch(`${apiUrl}users/login`, requestOptions);
+    const response = await fetch(`${apiUrl}/login`, requestOptions);
     const user = await handleResponse(response);
     localStorage.setItem('user', JSON.stringify(user));
     return user;
@@ -40,7 +40,7 @@ const register = async (user) => {
         body: JSON.stringify(user)
     };
 
-    const response = await fetch(`${apiUrl}users/registration`, requestOptions);
+    const response = await fetch(`${apiUrl}/registration`, requestOptions);
     return handleResponse(response);
 }
 
