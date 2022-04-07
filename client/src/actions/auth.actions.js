@@ -11,10 +11,6 @@ const login = (email, password) => {
                 user => { 
                     dispatch(success(user));
                     history.push('/');
-                    dispatch(alertActions.success('Login successful'));
-                    setTimeout(() => {
-                        dispatch(alertActions.clear());
-                    }, 3000)
                 },
                 error => {
                     dispatch(failure(error.toString()));
