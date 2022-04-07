@@ -9,6 +9,7 @@ const login = (email, password) => {
         authService.login(email, password)
             .then(
                 user => { 
+                    dispatch(alertActions.clear());
                     dispatch(success(user));
                     history.push('/');
                 },
