@@ -13,7 +13,9 @@ const signIn = (state = initialState, action) => {
         case LOGIN_FAILURE:
             return {};
         case LOGOUT:
-            return {};
+            return {
+                isLogged: false
+            };
         default:
             return state;
     }
