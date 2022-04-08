@@ -1,4 +1,4 @@
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, Navigate} from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
@@ -27,6 +27,7 @@ const AppRouter = connect(mapState)(({state}) => {
                         <>
                             <Route path={LOGIN_ROUTE} element={<Login/>}/>
                             <Route path={REGISTRATION_ROUTE} element={<RegistrationPage/>}/>
+                            <Route path='*' element={<Navigate to={LOGIN_ROUTE} replace/>}/>
                         </> 
                         : 
                         <Route path='*' element={<HomePage/>}/>}
