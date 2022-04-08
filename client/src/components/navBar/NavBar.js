@@ -14,10 +14,10 @@ const NavBar = () => {
 
     return (
         <div className="navbar">
-            <div className="navbar__wrapper">
+            <NavLink to="/" className="navbar__logo">
                 <img src={Logo} alt="logo" className="navbar__logo"/>
-                <a href="1" className="navbar__header">AUTH APP</a>
-            </div>
+                <div className="navbar__item">AUTH APP</div>
+            </NavLink>
             <div className="navbar__wrapper">
                 {!isLogged && <div className="navbar__login"><NavLink to="/login">Войти</NavLink></div>}
                 {!isLogged && <div className="navbar__registration"><NavLink to="/registration">Регистрация</NavLink></div>}
