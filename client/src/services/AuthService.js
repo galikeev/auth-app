@@ -1,3 +1,4 @@
+import { history } from "./history";
 const apiUrl = 'http://localhost:5000/api/auth';
 
 const handleResponse = (response) => {
@@ -31,6 +32,7 @@ const login = async (email, password) => {
 
 const logout = () => {
     localStorage.removeItem('user');
+    history.push('/login')
 }
 
 const register = async (user) => {
