@@ -25,7 +25,7 @@ const login = async (email, password) => {
 
     const response = await fetch(`${apiUrl}/login`, requestOptions);
     const user = await handleResponse(response);
-    localStorage.setItem('user', JSON.stringify(user.token));
+    localStorage.setItem('user', JSON.stringify(user));
     return user;
 }
 

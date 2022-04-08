@@ -11,6 +11,7 @@ const NavBar = () => {
     const dispatch = useDispatch();
 
     const isLogged = useSelector(state => state.signIn.isLogged);
+    const user = useSelector(state => state.signIn.user.user);
 
     return (
         <div className="navbar">
@@ -21,6 +22,7 @@ const NavBar = () => {
             <div className="navbar__wrapper">
                 {!isLogged && <div className="navbar__login"><NavLink to="/login">Войти</NavLink></div>}
                 {!isLogged && <div className="navbar__registration"><NavLink to="/registration">Регистрация</NavLink></div>}
+                {isLogged && <div>{user.firstName} {user.lastName}</div>}
                 {isLogged && <button className="navbar__logout btn btn-primary btn-block" onClick={() => dispatch(userActions.logout())}>Выйти</button>}
             </div>
         </div>
