@@ -1,9 +1,11 @@
-import {Routes, Route, Navigate} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
-import { authRoutes, publicRoutes } from '../../routes';
-import { LOGIN_ROUTE } from '../../utils/routesConsts';
+import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../../utils/routesConsts';
+import Login from '../../pages/LoginPage';
+import RegistrationPage from '../../pages/RegistrationPage';
+import HomePage from '../../pages/HomePage';
 
 function mapState(state) {
     return {
@@ -19,15 +21,17 @@ const AppRouter = connect(mapState)(({state}) => {
         <>
             {state.alert.message && <div className={state.alert.type} style={{'textAlign':'center'}}>{state.alert.message}</div>}
             <div className='container'>
-                {!isLogged && <Routes>
-                    {localStorage.getItem('user') && authRoutes.map(({path, Component}) => 
-                        <Route key={path} path={path} element={<Component/>}/>
-                    )}
-                    {publicRoutes.map(({path, Component}) => 
-                        <Route key={path} path={path} element={<Component/>}/>
-                    )}
-                    <Route path='*' element={<Navigate to={LOGIN_ROUTE} replace/>}/>
-                </Routes>}
+                <Routes>
+                    {!isLogged 
+                        ? 
+                        <>
+                            <Route path={LOGIN_ROUTE} element={<Login/>}/>
+                            <Route path={REGISTRATION_ROUTE} element={<RegistrationPage/>}/>
+                        </> 
+                        : 
+                        <Route path='*' element={<HomePage/>}/>}
+                    
+                </Routes>
             </div>
         </>
     );
