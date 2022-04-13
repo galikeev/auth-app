@@ -1,5 +1,5 @@
 import { history } from "./history";
-const apiUrl = `http://localhost:${process.env.PORT}/api/auth`;
+const apiUrl = 'https://application-authorization.herokuapp.com';
 
 const handleResponse = (response) => {
     return response.text().then(text => {
