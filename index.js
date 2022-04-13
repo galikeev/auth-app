@@ -1,11 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const config = require('config');
-const authRouter = require('./routes/auth.routes');
+const authRouter = require('./server/routes/auth.routes');
 const app = express();
 const PORT = process.env.PORT || config.get('serverPort');
 const URL = process.env.dbUrl || config.get('dbUrl');
-const corsMiddleware = require('./middleware/cors.middleware');
+const corsMiddleware = require('./server/middleware/cors.middleware');
 const path = require('path');
 
 app.use(corsMiddleware);

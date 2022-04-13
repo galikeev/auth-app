@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "client": "cd client && npm start",
-    "backend": "cd server && npm start",
+    "backend": "node index.js",
     "start": "concurrently \"npm run backend\" \"npm run client\""
   },
   "repository": {

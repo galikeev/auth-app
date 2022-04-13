@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const {check, validationResult} = require('express-validator');
 const router = new Router();
 const authMiddleware = require('../middleware/auth.middleware');
+const SECRET_KEY = process.env.secretKey || config.get('secretKey');
 
 router.post('/registration', 
     [
@@ -52,7 +53,7 @@ router.post('/login',
             return res.status(400).json({message: 'Invalid password'})
         }
 
-        const token = jwt.sign({id: user.id}, config.get('secretKey'), {expiresIn: '1h'});
+        const token = jwt.sign({id: user.id}, SECRET_KEY, {expiresIn: '1h'});
         return res.json({
             token,
             user: {
@@ -74,7 +75,7 @@ router.get('/auth', authMiddleware,
     async (req, res) => {
     try {
         const user = await User.findOne({_id: req.user.id});
-        const token = jwt.sign({id: user.id}, config.get('secretKey'), {expiresIn: '1h'});
+        const token = jwt.sign({id: user.id}, SECRET_KEY, {expiresIn: '1h'});
         return res.json({
             token,
             user: {
