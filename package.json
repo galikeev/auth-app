@@ -1,0 +1,24 @@
+{
+  "name": "auth-app",
+  "version": "1.0.0",
+  "description": "User authorization and registration with data storage on the server ## Technologies",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd client && npm start",
+    "backend": "cd server && npm run dev",
+    "dev": "concurrently \"npm run backend\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/galikeev/auth-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/galikeev/auth-app/issues"
+  },
+  "homepage": "https://github.com/galikeev/auth-app#readme",
+  "dependencies": {
+    "concurrently": "^7.1.0"
+  }
+}
