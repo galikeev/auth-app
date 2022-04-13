@@ -1,5 +1,5 @@
 import { history } from "./history";
-const apiUrl = 'http://localhost:5000/api/auth';
+const apiUrl = `http://localhost:${process.env.PORT}/api/auth`;
 
 const handleResponse = (response) => {
     return response.text().then(text => {
