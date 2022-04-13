@@ -12,14 +12,14 @@ app.use(corsMiddleware);
 app.use(express.json());
 app.use('/api/auth', authRouter);
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Enable push-state routing (e.g. with React Router's BrowserRouter)
 app.get('*', (req, res, next) => {
     if (req.url.startsWith('/api/auth')) {
         return next();
     }
-    res.sendFile(path.join(__dirname, 'build/index.html'));
+    res.sendFile(path.join(__dirname, 'client/build/index.html'));
 });
 
 const start = async () => {
