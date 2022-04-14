@@ -4,7 +4,7 @@
 
 ## Screenshot
 
-    [![2022-04-14-09-33-22.png](https://i.postimg.cc/ydYgh5kR/2022-04-14-09-33-22.png)](https://postimg.cc/Z9254wPY)
+[![2022-04-14-09-33-22.png](https://i.postimg.cc/ydYgh5kR/2022-04-14-09-33-22.png)](https://postimg.cc/Z9254wPY)
 
 ## Technologies
 
