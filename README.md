@@ -1,6 +1,7 @@
 # AUTH-APP on MERN stack
     User authorization and registration with data storage on the server
-    https://application-authorization.herokuapp.com/
+
+https://application-authorization.herokuapp.com/
 
 ## Screenshot
 
