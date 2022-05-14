@@ -46,7 +46,7 @@ const Login = () => {
 
     return (
         <div className="col-md-4 col-md-offset-4" style={{'margin' : '50px auto 0 auto'}}>
-            <h2 className="text-center">User Login</h2>
+            <h2 className="text-center">Авторизация</h2>
                 <form name="form">
                     <div className={'form-group' + (login.submitted && !login.email ? ' has-error' : '')}>
                         <label htmlFor="email" className='fz_15'>Email:</label>
@@ -54,26 +54,26 @@ const Login = () => {
                             type="text" 
                             id="email" 
                             className="form-control input-shadow" 
-                            placeholder="Enter Email" 
+                            placeholder="Введите email" 
                             value={login.email} 
                             onChange={handleInputChange} 
                             name="email"
                         />
-                        {login.submitted && !login.email && <div className="help-block text-danger fz_13">Email is required</div> }
+                        {login.submitted && !login.email && <div className="help-block text-danger fz_13">Введите email!</div> }
                     </div>
                     <div className={'form-group' + (login.submitted && !login.password ? ' has-error' : '')}>                    
-                        <label className='fz_15'>Password: </label>
+                        <label className='fz_15'>Пароль: </label>
                         <input 
                             type="password" 
                             id="exampleInputPassword" 
                             className="form-control input-shadow" 
-                            placeholder="Enter Password" 
+                            placeholder="Введите пароль" 
                             value={login.password}	
                             onChange={handleInputChange} 
                             name="password" 
                             autoComplete="off"
                         />
-                        {login.submitted && !login.email && <div className="help-block text-danger fz_13">Password is required</div> }
+                        {login.submitted && !login.email && <div className="help-block text-danger fz_13">Введите пароль!</div> }
                     </div>
                     <div style={{'marginTop' : '10px'}}>
                         <button 
@@ -81,9 +81,9 @@ const Login = () => {
                             onClick={submitLogin} 
                             className="btn btn-primary btn-block"
                         >
-                            Sign In
+                            Войти
                         </button>
-                        <Link to={REGISTRATION_ROUTE} className="btn btn-link">Register</Link>
+                        <Link to={REGISTRATION_ROUTE} className="btn btn-link">Зарегистрироваться</Link>
                     </div>
                 </form>
         </div>
