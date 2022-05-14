@@ -83,7 +83,7 @@ const Login = () => {
                         >
                             Войти
                         </button>
-                        <Link to={REGISTRATION_ROUTE} className="btn btn-link">Зарегистрироваться</Link>
+                        <Link to={REGISTRATION_ROUTE} className="btn btn-link">Регистрация</Link>
                     </div>
                 </form>
         </div>
